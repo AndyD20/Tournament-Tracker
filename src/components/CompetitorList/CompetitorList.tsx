@@ -1,20 +1,21 @@
 import { UserIcon, CheckIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import {Dispatch, SetStateAction, useState} from "react";
+import {ICompetitor} from "../../model/Competitor";
 
 interface CompetitorListProps {
-  competitorNames: Array<string>;
-  setCompetitorNames: (newList: Array<string>) => void;
+  competitors: ICompetitor[];
+  setCompetitors: Dispatch<SetStateAction<ICompetitor[]>>;
 }
 
 const CompetitorList = ({
-  competitorNames,
-  setCompetitorNames,
+  competitors,
+  setCompetitors,
 }: CompetitorListProps) => {
   const [highlightedItem, setHighlightedItem] = useState<number>(-1);
 
   const removeCompetitorFromList = (indexToRemove: number) => {
-    setCompetitorNames(
-      competitorNames.filter((_, index) => index !== indexToRemove)
+    setCompetitors(
+      competitors.filter((_, index) => index !== indexToRemove)
     );
     setHighlightedItem(-1);
   };
@@ -37,11 +38,11 @@ const CompetitorList = ({
 
   return (
     <div className="flex flex-col border-2 rounded-md border-slate-500 shadow-lg">
-      {competitorNames.map((name, index) => {
-        const lastItem = index === competitorNames.length - 1;
+      {competitors.map((competitor, index) => {
+        const lastItem = index === competitors.length - 1;
 
         return (
-          <div key={name+index}>
+          <div key={competitor.name+index}>
             <div className="px-6 py-4 flex flex-col text-xl">
               <div
                 className="flex flex-row cursor-pointer"
@@ -52,7 +53,7 @@ const CompetitorList = ({
                 }
               >
                 <UserIcon className="self-center h-5 w-5 mr-2 text-orange-500" />
-                <div>{name}</div>
+                <div>{competitor.name}</div>
               </div>
 
               {index === highlightedItem && <RemoveCompetitor index={index}/>}

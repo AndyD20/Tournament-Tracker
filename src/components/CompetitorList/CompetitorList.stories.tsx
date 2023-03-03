@@ -1,5 +1,6 @@
 import {ComponentStory, Meta} from "@storybook/react";
 import CompetitorList from "./CompetitorList";
+import Competitor from "../../classes/Competitor";
 
 export default {
   title: "Components/CompetitorList",
@@ -11,10 +12,10 @@ const Template: ComponentStory<typeof CompetitorList> = (args) => <CompetitorLis
 export const Default = Template.bind({});
 
 Default.args = {
-  competitorNames: [
-    "Andy",
-    "Dan",
-    "Kieran"
+  competitors: [
+    new Competitor(0, "Andy"),
+    new Competitor(0, "Dan"),
+    new Competitor(0, "Kieran"),
   ],
-  setCompetitorNames: (newList: Array<string>) => {}
+  setCompetitors: () => {}
 };

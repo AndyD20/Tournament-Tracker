@@ -6,8 +6,8 @@ export default {
   component: NameEntryField,
 } as Meta;
 
-const Template: ComponentStory<typeof NameEntryField> = (args) => (
-  <NameEntryField {...args} />
+const Template: ComponentStory<typeof NameEntryField> = () => (
+  <NameEntryField />
 );
 
 export const Default = Template.bind({});
