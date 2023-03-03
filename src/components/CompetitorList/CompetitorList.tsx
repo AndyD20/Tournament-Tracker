@@ -41,7 +41,7 @@ const CompetitorList = ({
         const lastItem = index === competitorNames.length - 1;
 
         return (
-          <>
+          <div key={name+index}>
             <div className="px-6 py-4 flex flex-col text-xl">
               <div
                 className="flex flex-row cursor-pointer"
@@ -58,7 +58,7 @@ const CompetitorList = ({
               {index === highlightedItem && <RemoveCompetitor index={index}/>}
             </div>
             {!lastItem && <hr />}
-          </>
+          </div>
         );
       })}
     </div>
