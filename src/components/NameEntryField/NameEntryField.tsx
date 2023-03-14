@@ -11,7 +11,7 @@ const NameEntryField = () => {
     const addName = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (competitors.length > 0) {
-            const lastCompetitorId = competitors[competitors.length - 1].competitor_id
+            const lastCompetitorId = competitors[competitors.length - 1].competitorId
             const newCompetitor = new Competitor(lastCompetitorId + 1, newName)
             setCompetitors(competitors.concat([newCompetitor]))
         } else {

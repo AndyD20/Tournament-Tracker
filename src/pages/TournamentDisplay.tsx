@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import useCompetitors from "../contexts/Competitors";
 import CompetitorList from "../components/CompetitorList/CompetitorList";
 
 const TournamentDisplay = () => {
-    const {competitors, setCompetitors} = useCompetitors();
+    const {competitors, setCompetitors, createMatchups} = useCompetitors();
+
+    useEffect(() => {
+        createMatchups();
+    }, [createMatchups])
 
     return (
         <div>

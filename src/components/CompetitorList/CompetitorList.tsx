@@ -1,6 +1,6 @@
 import { UserIcon, CheckIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import {Dispatch, SetStateAction, useState} from "react";
-import {ICompetitor} from "../../model/Competitor";
+import {ICompetitor} from "../../model/ICompetitor";
 
 interface CompetitorListProps {
   competitors: ICompetitor[];

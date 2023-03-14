@@ -1,12 +1,12 @@
-import {ICompetitor} from "../model/Competitor";
+import {ICompetitor} from "../model/ICompetitor";
 
 export default class Competitor implements ICompetitor {
     constructor(competitor_id: number, name: string) {
-        this.competitor_id = competitor_id;
+        this.competitorId = competitor_id;
         this.name = name
     }
 
-    competitor_id: number;
+    competitorId: number;
     name: string;
 
 }
