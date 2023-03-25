@@ -1,17 +1,22 @@
-import React, {useEffect} from 'react';
 import useCompetitors from "../contexts/Competitors";
-import CompetitorList from "../components/CompetitorList/CompetitorList";
+import { ICompetitor } from "model/ICompetitor";
 
 const TournamentDisplay = () => {
-    const {competitors, setCompetitors, createMatchups} = useCompetitors();
+    const {matchups} = useCompetitors();
 
-    useEffect(() => {
-        createMatchups();
-    }, [createMatchups])
+    const Round = ({roundNumber, roundCompetitors}: {roundNumber: number, roundCompetitors: ICompetitor[][]}) => {
+        return (
+            <div>
+                <h3>Round {roundNumber}</h3>
+                <div>{roundCompetitors.map(comp => <><div>{comp[0].name} vs. {comp[1].name}</div><br/></>)}</div>
+                <hr/>
+            </div>
+        )
+    }
 
     return (
         <div>
-            <CompetitorList competitors={competitors} setCompetitors={setCompetitors}/>
+            {matchups.map((matchup, index) => <Round roundNumber={index} roundCompetitors={matchup}/>)}
         </div>
     );
 };
